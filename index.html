@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IW8-MOD Downloader</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --warning: #facc15;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            max-width: 600px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 420px;
+            transition: transform 0.2s;
+            border: 1px solid #334155;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-image {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+
+        .tags {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background-color: #334155;
+            color: #cbd5e1;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .download-btn {
+            display: block;
+            text-align: center;
+            background-color: transparent;
+            color: var(--text-main);
+            border: 2px solid var(--accent);
+            padding: 0.75rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+
+        .download-btn:hover {
+            background-color: var(--accent);
+            box-shadow: 0 0 12px rgba(59, 130, 246, 0.5);
+        }
+
+        .dll-btn {
+            border-color: var(--warning) !important;
+        }
+
+        .dll-btn:hover {
+            background-color: var(--warning) !important;
+            color: #000 !important;
+            box-shadow: 0 0 12px rgba(250, 204, 21, 0.5) !important;
+        }
+
+        .warning-text {
+            color: var(--warning);
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-align: center;
+            margin-top: -0.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        footer {
+            margin-top: auto;
+            padding-top: 3rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>IW8-MOD Downloads</h1>
+        <p>Descarcă fișierele necesare pentru configurarea clientului LAN.</p>
+    </header>
+
+    <div class="container">
+        <!-- CARDUL PRINCIPAL -->
+        <div class="card">
+            <!-- Imagine de fundal sugestivă (se poate schimba link-ul) -->
+            <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=400&auto=format&fit=crop')"></div>
+            
+            <div class="card-content">
+                <div class="card-title">Modern Warfare v1.67</div>
+                
+                <div class="tags">
+                    <span class="tag">Google Drive</span>
+                    <span class="tag">LAN Mod</span>
+                </div>
+                
+                <!-- Primul link de Google Drive -->
+                <a href="https://drive.google.com/file/d/1cMVwjML_NNU9MPpr4jo6bFLdS5Vgb51u/view" target="_blank" class="download-btn">
+                    Warzone Only | Google Drive 1
+                </a>
+                
+                <!-- Al doilea link de Google Drive -->
+                <a href="https://drive.google.com/file/d/1zfTyYyVPJSlOsfSKyeolKe3soNgLVgee/view" target="_blank" class="download-btn">
+                    WZ Maps Only | Google Drive 2
+                </a>
+
+                <!-- Butonul pentru fișierul local version.dll -->
+                <a href="version.dll" download class="download-btn dll-btn">
+                    Download | version.dll
+                </a>
+                
+                <!-- Textul explicativ solicitat -->
+                <p class="warning-text">
+                    ⚠️ THIS IS THE REAL IW8-MOD LAN DLL.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 IW8-MOD Hub. Toate drepturile rezervate.</p>
+    </footer>
+
+</body>
+</html>
