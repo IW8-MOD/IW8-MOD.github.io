@@ -18,26 +18,12 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
         body { background-color: var(--bg-color); color: var(--text-main); display: flex; min-height: 100vh; }
 
-        /* BARA LATERALA - STILIZATA CA IN IMAGE_BD5B2D.PNG */
-        .sidebar { width: 90px; background-color: var(--sidebar-bg); display: flex; flex-direction: column; align-items: center; padding: 2rem 0; gap: 2.5rem; border-right: 1px solid #273549; position: fixed; height: 100vh; top: 0; left: 0; z-index: 10; }
+        /* BARA LATERALA CURATATA - DOAR CU GIF-UL LUI CAPTAIN PRICE */
+        .sidebar { width: 90px; background-color: var(--sidebar-bg); display: flex; flex-direction: column; align-items: center; padding: 1.5rem 0; border-right: 1px solid #273549; position: fixed; height: 100vh; top: 0; left: 0; z-index: 10; }
         
-        /* Logo-urile din launcher */
-        .launcher-icon { width: 65px; height: 45px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 900; letter-spacing: 1px; text-decoration: none; border-radius: 6px; transition: all 0.2s; cursor: pointer; text-align: center; border: 1px solid transparent; }
-        
-        /* Culorile specifice din poza ta */
-        .icon-mw { color: #ffffff; border-left: 3px solid var(--accent); background-color: rgba(59, 130, 246, 0.1); font-size: 1.2rem; }
-        .icon-bo { color: #ef4444; font-size: 0.65rem; }
-        .icon-bo span { font-size: 0.85rem; display: block; line-height: 0.7; }
-        .icon-v { color: #b45309; font-size: 1.4rem; font-family: 'Times New Roman', serif; }
-        .icon-mw2 { color: #10b981; font-size: 1rem; }
-        .icon-mw3 { color: #dc2626; font-size: 0.9rem; }
-        .icon-bo6 { color: #ea580c; font-size: 0.85rem; }
-        .icon-wz { color: #a1a1aa; font-size: 1.1rem; }
-        .icon-cod { color: #6d28d9; font-size: 1.1rem; }
-
-        .launcher-icon:hover { background-color: rgba(255, 255, 255, 0.05); transform: scale(1.05); }
-        .launcher-icon.locked { opacity: 0.3; cursor: not-allowed; }
-        .launcher-icon.locked:hover { background-color: transparent; transform: none; }
+        /* Container pentru GIF-ul cu Captain Price */
+        .launcher-gif { width: 70px; height: 70px; border-radius: 12px; overflow: hidden; border: 2px solid var(--accent); box-shadow: 0 0 10px rgba(59, 130, 246, 0.4); display: flex; align-items: center; justify-content: center; }
+        .launcher-gif img { width: 100%; height: 100%; object-fit: cover; }
 
         /* CONTINUTUL PRINCIPAL */
         .main-content { margin-left: 90px; flex-grow: 1; padding: 2rem; display: flex; flex-direction: column; align-items: center; width: calc(100% - 90px); }
@@ -73,43 +59,29 @@
         .discord-btn { display: inline-flex; align-items: center; justify-content: center; background-color: var(--discord); color: white; padding: 1rem 2rem; border-radius: 50px; font-weight: bold; text-decoration: none; font-size: 1.1rem; transition: all 0.2s; box-shadow: 0 4px 14px rgba(88, 101, 242, 0.4); }
         .discord-btn:hover { transform: scale(1.05); background-color: #4752C4; box-shadow: 0 6px 20px rgba(88, 101, 242, 0.6); }
 
-        /* OPTIMIZARE REZOLUTIE PENTRU TELEFOANE */
+        /* AJUSTARE PENTRU ECRANELE DE MOBIL */
         @media (max-width: 768px) {
             body { flex-direction: column; }
-            .sidebar { width: 100%; height: auto; position: relative; flex-direction: row; justify-content: center; padding: 0.75rem; gap: 0.75rem; border-right: none; border-bottom: 1px solid #273549; overflow-x: auto; }
-            .launcher-icon { width: 50px; height: 35px; font-size: 0.7rem; }
-            .icon-mw { font-size: 0.9rem; border-left: none; border-bottom: 3px solid var(--accent); }
-            .icon-bo { font-size: 0.5rem; }
-            .icon-bo span { font-size: 0.65rem; }
-            .icon-v { font-size: 1rem; }
-            .icon-mw2 { font-size: 0.8rem; }
-            .icon-mw3 { font-size: 0.75rem; }
-            .icon-bo6 { font-size: 0.7rem; }
-            .icon-wz { font-size: 0.85rem; }
-            .icon-cod { font-size: 0.85rem; }
+            .sidebar { width: 100%; height: auto; position: relative; padding: 0.75rem; border-right: none; border-bottom: 1px solid #273549; justify-content: center; }
+            .launcher-gif { width: 55px; height: 55px; }
             .main-content { margin-left: 0; width: 100%; padding: 1rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- BARA LATERALA INSPIRATA DIN IMAGE_BD5B2D.PNG -->
+    <!-- BARA LATERALA RECONFIGURATA DOAR CU PRICE GIF -->
     <div class="sidebar">
-        <div class="launcher-icon icon-mw" title="Modern Warfare (Active)">MW</div>
-        <div class="launcher-icon icon-bo locked" title="Black Ops (Coming Soon)">BLACK<span>OPS</span></div>
-        <div class="launcher-icon icon-v locked" title="Vanguard (Coming Soon)">𝕍</div>
-        <div class="launcher-icon icon-mw2 locked" title="Modern Warfare II (Coming Soon)">MWII</div>
-        <div class="launcher-icon icon-mw3 locked" title="Modern Warfare III (Coming Soon)">MWIII</div>
-        <div class="launcher-icon icon-bo6 locked" title="Black Ops 6 (Coming Soon)">BO6</div>
-        <div class="launcher-icon icon-wz locked" title="Warzone (Coming Soon)">WZ</div>
-        <div class="launcher-icon icon-cod locked" title="Call of Duty (Coming Soon)">CoD</div>
+        <div class="launcher-gif">
+            <img src="https://media1.tenor.com/m/Ng5ofwU70sEAAAAd/captain-price-call-of-duty.gif" alt="Captain Price">
+        </div>
     </div>
 
-    <!-- SECTIUNEA PRINCIPALA CU JOCURILE TALE -->
+    <!-- SECTIUNEA PRINCIPALA -->
     <div class="main-content">
         <header>
-            <h1>IW8-MOD Launcher</h1>
-            <p>Select your game from the sidebar and download the required files.</p>
+            <h1>IW8-MOD Downloader</h1>
+            <p>Download the required files for the Modern Warfare LAN client.</p>
         </header>
 
         <div class="grid-container">
@@ -120,6 +92,8 @@
                     <div class="card-title">Modern Warfare v1.64</div>
                     <div class="tags"><span class="tag">Last Stand</span><span class="tag">LAN</span></div>
                     <a href="https://fafda.to/d/5y6jr9wc2end?v=Cg2W0MSgkilNxXkbFIusWRMzGV80nBRC4z_z42ktNojLwkaUye1H6fHNruWqgorNe5WgUPI9X8XvhlQwBp64TD-BXZlxQ4zI0AG6Aq9cNnMz7PH4G098lDlA7uYeWtw1RLVHc9xmFK1FloHmrF8aqi-ksNYOdkiCgD2QmpJnF6rysUDcv_hSl4N0XlkB5CHD9wSdmQatJCWq7vHF9WrsCpw_LBuH7tLll-AkWyksUwkuSFzBrt27l-H9VVYCAtO9U2LSrosvrE_z7J3_mUcb2Xc5V7o3XE0uaq1YVQMPelniECrfYxa7Z7I" target="_blank" class="download-btn">Download v1.64</a>
+                    
+                    <!-- Pune-ti link-ul tau de GoFile in loc de textul din href de mai jos -->
                     <a href="https://gofile.io/d/rSOueL" target="_blank" class="download-btn dll-btn">Download | version.dll</a>
                     <p class="warning-text">⚠️ THIS IS THE REAL IW8-MOD LAN DLL.</p>
                 </div>
@@ -131,19 +105,24 @@
                 <div class="card-content">
                     <div class="card-title">Modern Warfare v1.41</div>
                     <div class="tags"><span class="tag">Season 5</span><span class="tag">Google Drive</span></div>
+                    
+                    <!-- Pune-ti link-ul tau de Google Drive in loc de textul din href de mai jos -->
                     <a href="https://drive.google.com/file/d/1cMVwjML_NNU9MPpr4jo6bFLdS5Vgb51u/view?usp=sharing" target="_blank" class="download-btn">Download from Google Drive</a>
+                    
+                    <!-- Pune-ti link-ul tau de GoFile in loc de textul din href de mai jos -->
                     <a href="https://gofile.io/d/rSOueL" target="_blank" class="download-btn dll-btn">Download | version.dll</a>
                     <p class="warning-text">⚠️ THIS IS THE REAL IW8-MOD LAN DLL.</p>
                 </div>
             </div>
         </div>
 
-        <!-- TUTORIAL VIDEO SECTION -->
+        <!-- TUTORIAL VIDEO SECTION (REPARAT SA NU MAI REFUZE CONEXIUNEA) -->
         <div class="info-container">
             <div class="info-title">Google Drive Quota Bypass Tutorial</div>
             <p class="info-text">If the Google Drive download limit is reached, watch this quick video guide to learn how to bypass the quota and download the file instantly.</p>
             <div class="video-wrapper">
-                <iframe src="https://youtu.be/3NrjUepH3XM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <!-- IMPORTANT: Inlocuieste dQw4w9WgXcQ cu codul (ID-ul) real al clipului tau de pe YouTube de la tutorial -->
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
         </div>
 
