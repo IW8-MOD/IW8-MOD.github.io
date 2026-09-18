@@ -13,31 +13,53 @@
             font-family: 'Poppins', sans-serif;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             color: #e0e0e0;
             line-height: 1.6;
             background-color: #121619;
         }
 
-        /* Top Navigation Bar cu comutator de limba */
+        /* Nav Bar cu Meniu Hamburger si Limba */
         nav {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            padding: 20px;
+            padding: 15px 25px;
             display: flex;
-            justify-content: flex-end;
-            z-index: 10;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(18, 22, 25, 0.9);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid #2c353d;
         }
 
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Comutator Limba */
         .lang-switch {
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.4);
             border: 1px solid #2c353d;
             border-radius: 20px;
-            padding: 5px 12px;
+            padding: 4px 10px;
             display: flex;
-            gap: 8px;
+            gap: 6px;
         }
 
         .lang-btn {
@@ -46,12 +68,85 @@
             color: #aaa;
             font-weight: 600;
             cursor: pointer;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             transition: color 0.2s;
         }
 
         .lang-btn.active, .lang-btn:hover {
             color: #27ae60;
+        }
+
+        /* Meniu Hamburger (Cele 3 liniute) */
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: #fff;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        /* Animație Hamburger */
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        /* Meniu Meniu Dropdown / Overlay */
+        .dropdown-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100vh;
+            background-color: #1a2026;
+            border-left: 1px solid #2c353d;
+            box-shadow: -5px 0 25px rgba(0,0,0,0.6);
+            display: flex;
+            flex-direction: column;
+            padding: 80px 30px 30px;
+            gap: 15px;
+            transition: right 0.4s ease;
+            z-index: 999;
+        }
+
+        .dropdown-menu.active {
+            right: 0;
+        }
+
+        .dropdown-menu a {
+            color: #dcdde1;
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 500;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: color 0.2s, padding-left 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dropdown-menu a:hover {
+            color: #27ae60;
+            padding-left: 5px;
         }
 
         /* Header / Hero */
@@ -65,7 +160,7 @@
             align-items: center;
             text-align: center;
             padding: 20px;
-            position: relative;
+            margin-top: 60px;
         }
 
         header h1 {
@@ -115,6 +210,7 @@
             margin-bottom: 40px;
             position: relative;
             color: #ffffff;
+            scroll-margin-top: 90px;
         }
 
         .section-title::after {
@@ -186,6 +282,7 @@
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
             transition: transform 0.2s;
+            scroll-margin-top: 100px;
         }
 
         .gallery-card:hover {
@@ -259,15 +356,32 @@
 </head>
 <body>
 
-    <!-- Comutator Limba -->
     <nav>
-        <div class="lang-switch">
-            <button class="lang-btn active" onclick="setLanguage('ro')">RO 🇷🇴</button>
-            <button class="lang-btn" onclick="setLanguage('en')">EN 🇬🇧</button>
+        <a href="#" class="logo">Cabana Ovidiu</a>
+        <div class="nav-controls">
+            <div class="lang-switch">
+                <button class="lang-btn active" onclick="setLanguage('ro')">RO 🇷🇴</button>
+                <button class="lang-btn" onclick="setLanguage('en')">EN 🇬🇧</button>
+            </div>
+            <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <div class="dropdown-menu" id="dropdown-menu">
+        <a href="#" onclick="toggleMenu()"><span id="menu-home">🏠 Acasă</span></a>
+        <a href="#about-sec" onclick="toggleMenu()"><span id="menu-about">ℹ️ Despre Noi</span></a>
+        <a href="#dormitoare" onclick="toggleMenu()"><span id="menu-rooms">🛏️ Dormitoare</span></a>
+        <a href="#bai" onclick="toggleMenu()"><span id="menu-baths">🚿 Băi Modernizate</span></a>
+        <a href="#foisor" onclick="toggleMenu()"><span id="menu-gazebo">🍖 Foișor & Grătar</span></a>
+        <a href="#curte" onclick="toggleMenu()"><span id="menu-yard">🌳 Curte & Relaxare</span></a>
+        <a href="#location-sec" onclick="toggleMenu()"><span id="menu-location">📍 Locație</span></a>
+        <a href="https://wa.me/40740658140?text=Buna%20ziua!%20Doresc%20sa%20solicit%20o%20rezervare%20la%20Cabana%20Ovidiu." target="_blank" onclick="toggleMenu()"><span id="menu-book">💬 Rezervare</span></a>
+    </div>
+
     <header>
         <h1>Cabana Ovidiu</h1>
         <p id="hero-subtitle">Oază de liniște și relaxare în inima Văii Avrigului</p>
@@ -278,13 +392,11 @@
 
     <div class="container">
         
-        <!-- Despre Cabana -->
-        <h2 id="title-about" class="section-title">Despre Cabană</h2>
+        <h2 id="title-about" class="section-title" id="about-sec">Despre Cabană</h2>
         <div class="about-text">
             <p id="text-about">Suntem situați într-o zonă montană deosebită din Valea Avrigului. Cabana Ovidiu vă oferă tot confortul necesar pentru un sejur relaxant alături de familie și prieteni: curte spațioasă cu foișor, zona BBQ complet echipată, balansoar, șezlonguri și spații interioare călduroase și primitoare.</p>
         </div>
 
-        <!-- Facilitati -->
         <h2 id="title-facilities" class="section-title">Facilități & Servicii</h2>
         <div class="facilities-grid">
             <div class="facility-card">
@@ -300,7 +412,7 @@
                 <h3 id="fac-3">Curte Mare & Balansoar</h3>
             </div>
             <div class="facility-card">
-                <div>內</div>
+                <div>🚿</div>
                 <h3 id="fac-4">Băi Moderne cu Duș</h3>
             </div>
             <div class="facility-card">
@@ -315,17 +427,16 @@
 
     </div>
 
-    <!-- Galerie Foto -->
     <div class="container">
         <h2 id="title-gallery" class="section-title">Galerie Foto</h2>
         <div class="gallery-grid">
             
-            <div class="gallery-card">
+            <div class="gallery-card" id="curte">
                 <img src="28084.jpg" alt="Vedere Exterioară Cabana Ovidiu">
                 <p id="gal-1">Vedere exterioară și terasă</p>
             </div>
 
-            <div class="gallery-card">
+            <div class="gallery-card" id="foisor">
                 <img src="28088.jpg" alt="Foișor și Zona de Grătar">
                 <p id="gal-2">Foișor acoperit cu grătar și plită</p>
             </div>
@@ -340,12 +451,12 @@
                 <p id="gal-4">Living primitor cu șemineu</p>
             </div>
 
-            <div class="gallery-card">
+            <div class="gallery-card" id="dormitoare">
                 <img src="28100.jpg" alt="Dormitor">
                 <p id="gal-5">Dormitor confortabil</p>
             </div>
 
-            <div class="gallery-card">
+            <div class="gallery-card" id="bai">
                 <img src="28090.jpg" alt="Baie Modernă">
                 <p id="gal-6">Baie modernă cu duș walk-in</p>
             </div>
@@ -368,8 +479,7 @@
         </div>
     </div>
 
-    <!-- Locatie Harta -->
-    <div class="container">
+    <div class="container" id="location-sec">
         <h2 id="title-location" class="section-title">Unde Ne Găsiți</h2>
         <div class="map-container">
             <iframe 
@@ -383,7 +493,6 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer>
         <p><strong>Cabana Ovidiu – Valea Avrigului</strong></p>
         <p id="footer-contact">Pentru rezervări și informații: +40 740 658 140</p>
@@ -392,15 +501,26 @@
         </p>
     </footer>
 
-    <!-- Button WhatsApp Mobil Flotant -->
     <a href="https://wa.me/40740658140?text=Buna%20ziua!%20Doresc%20sa%20solicit%20o%20rezervare%20la%20Cabana%20Ovidiu." class="floating-wa" target="_blank" title="Rezervă pe WhatsApp">
         💬
     </a>
 
-    <!-- Script Comutare Limba -->
     <script>
+        function toggleMenu() {
+            document.getElementById('hamburger').classList.toggle('active');
+            document.getElementById('dropdown-menu').classList.toggle('active');
+        }
+
         const translations = {
             ro: {
+                menuHome: "🏠 Acasă",
+                menuAbout: "ℹ️ Despre Noi",
+                menuRooms: "🛏️ Dormitoare",
+                menuBaths: "🚿 Băi Modernizate",
+                menuGazebo: "🍖 Foișor & Grătar",
+                menuYard: "🌳 Curte & Relaxare",
+                menuLocation: "📍 Locație",
+                menuBook: "💬 Rezervare",
                 heroSubtitle: "Oază de liniște și relaxare în inima Văii Avrigului",
                 btnWaHeader: "💬 Rezervă pe WhatsApp",
                 titleAbout: "Despre Cabană",
@@ -428,6 +548,14 @@
                 waMessage: "https://wa.me/40740658140?text=Buna%20ziua!%20Doresc%20sa%20solicit%20o%20rezervare%20la%20Cabana%20Ovidiu."
             },
             en: {
+                menuHome: "🏠 Home",
+                menuAbout: "ℹ️ About Us",
+                menuRooms: "🛏️ Bedrooms",
+                menuBaths: "🚿 Modern Bathrooms",
+                menuGazebo: "🍖 Gazebo & Grill",
+                menuYard: "🌳 Yard & Relaxation",
+                menuLocation: "📍 Location",
+                menuBook: "💬 Book Now",
                 heroSubtitle: "An oasis of peace and relaxation in the heart of Avrig Valley",
                 btnWaHeader: "💬 Book on WhatsApp",
                 titleAbout: "About The Cabin",
@@ -457,6 +585,15 @@
         };
 
         function setLanguage(lang) {
+            document.getElementById('menu-home').innerText = translations[lang].menuHome;
+            document.getElementById('menu-about').innerText = translations[lang].menuAbout;
+            document.getElementById('menu-rooms').innerText = translations[lang].menuRooms;
+            document.getElementById('menu-baths').innerText = translations[lang].menuBaths;
+            document.getElementById('menu-gazebo').innerText = translations[lang].menuGazebo;
+            document.getElementById('menu-yard').innerText = translations[lang].menuYard;
+            document.getElementById('menu-location').innerText = translations[lang].menuLocation;
+            document.getElementById('menu-book').innerText = translations[lang].menuBook;
+
             document.getElementById('hero-subtitle').innerText = translations[lang].heroSubtitle;
             document.getElementById('btn-wa-header').innerText = translations[lang].btnWaHeader;
             document.getElementById('btn-wa-header').href = translations[lang].waMessage;
@@ -483,7 +620,6 @@
             document.getElementById('footer-contact').innerText = translations[lang].footerContact;
             document.getElementById('footer-gdpr').innerText = translations[lang].footerGdpr;
 
-            // Actualizare butoane
             const buttons = document.querySelectorAll('.lang-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
             if(lang === 'ro') buttons[0].classList.add('active');
