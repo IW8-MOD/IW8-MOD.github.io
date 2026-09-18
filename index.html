@@ -16,7 +16,42 @@
         body {
             color: #e0e0e0;
             line-height: 1.6;
-            background-color: #121619; /* Fundal închis elegant */
+            background-color: #121619;
+        }
+
+        /* Top Navigation Bar cu comutator de limba */
+        nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: flex-end;
+            z-index: 10;
+        }
+
+        .lang-switch {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid #2c353d;
+            border-radius: 20px;
+            padding: 5px 12px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            color: #aaa;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .lang-btn.active, .lang-btn:hover {
+            color: #27ae60;
         }
 
         /* Header / Hero */
@@ -30,6 +65,7 @@
             align-items: center;
             text-align: center;
             padding: 20px;
+            position: relative;
         }
 
         header h1 {
@@ -223,105 +259,112 @@
 </head>
 <body>
 
+    <nav>
+        <div class="lang-switch">
+            <button class="lang-btn active" onclick="setLanguage('ro')">RO 🇷🇴</button>
+            <button class="lang-btn" onclick="setLanguage('en')">EN 🇬🇧</button>
+        </div>
+    </nav>
+
     <header>
         <h1>Cabana Ovidiu</h1>
-        <p>Oază de liniște și relaxare în inima Văii Avrigului</p>
-        <a href="https://wa.me/40740658140?text=Buna%20ziua!%20Doresc%20sa%20solicit%20o%20rezervare%20la%20Cabana%20Ovidiu." class="btn-whatsapp" target="_blank">
+        <p id="hero-subtitle">Oază de liniște și relaxare în inima Văii Avrigului</p>
+        <a id="btn-wa-header" href="https://wa.me/40740658140?text=Buna%20ziua!%20Doresc%20sa%20solicit%20o%20rezervare%20la%20Cabana%20Ovidiu." class="btn-whatsapp" target="_blank">
             💬 Rezervă pe WhatsApp
         </a>
     </header>
 
     <div class="container">
         
-        <h2 class="section-title">Despre Cabană</h2>
+        <h2 id="title-about" class="section-title">Despre Cabană</h2>
         <div class="about-text">
-            <p>Suntem situați într-o zonă montană deosebită din Valea Avrigului. Cabana Ovidiu vă oferă tot confortul necesar pentru un sejur relaxant alături de familie și prieteni: curte spațioasă cu foișor, zona BBQ complet echipată, balansoar, șezlonguri și spații interioare călduroase și primitoare.</p>
+            <p id="text-about">Suntem situați într-o zonă montană deosebită din Valea Avrigului. Cabana Ovidiu vă oferă tot confortul necesar pentru un sejur relaxant alături de familie și prieteni: curte spațioasă cu foișor, zona BBQ complet echipată, balansoar, șezlonguri și spații interioare călduroase și primitoare.</p>
         </div>
 
-        <h2 class="section-title">Facilități & Servicii</h2>
+        <h2 id="title-facilities" class="section-title">Facilități & Servicii</h2>
         <div class="facilities-grid">
             <div class="facility-card">
                 <div>🛏️</div>
-                <h3>Camere Confortabile</h3>
+                <h3 id="fac-1">Camere Confortabile</h3>
             </div>
             <div class="facility-card">
                 <div>🍖</div>
-                <h3>Foișor & Zona BBQ / Plită</h3>
+                <h3 id="fac-2">Foișor & Zona BBQ / Plită</h3>
             </div>
             <div class="facility-card">
                 <div>🌳</div>
-                <h3>Curte Mare & Balansoar</h3>
+                <h3 id="fac-3">Curte Mare & Balansoar</h3>
             </div>
             <div class="facility-card">
                 <div>🚿</div>
-                <h3>Băi Moderne cu Duș</h3>
+                <h3 id="fac-4">Băi Moderne cu Duș</h3>
             </div>
             <div class="facility-card">
                 <div>🔥</div>
-                <h3>Living cu Șemineu / Sobă</h3>
+                <h3 id="fac-5">Living cu Șemineu / Sobă</h3>
             </div>
             <div class="facility-card">
                 <div>🏓</div>
-                <h3>Tenis de Masă & Agrement</h3>
+                <h3 id="fac-6">Tenis de Masă & Agrement</h3>
             </div>
         </div>
 
     </div>
 
     <div class="container">
-        <h2 class="section-title">Galerie Foto</h2>
+        <h2 id="title-gallery" class="section-title">Galerie Foto</h2>
         <div class="gallery-grid">
             
             <div class="gallery-card">
                 <img src="28084.jpg" alt="Vedere Exterioară Cabana Ovidiu">
-                <p>Vedere exterioară și terasă</p>
+                <p id="gal-1">Vedere exterioară și terasă</p>
             </div>
 
             <div class="gallery-card">
                 <img src="28088.jpg" alt="Foișor și Zona de Grătar">
-                <p>Foișor acoperit cu grătar și plită</p>
+                <p id="gal-2">Foișor acoperit cu grătar și plită</p>
             </div>
 
             <div class="gallery-card">
                 <img src="28086.jpg" alt="Zona de Relaxare în Curte">
-                <p>Curte spațioasă cu balansoar și șezlonguri</p>
+                <p id="gal-3">Curte spațioasă cu balansoar și șezlonguri</p>
             </div>
 
             <div class="gallery-card">
                 <img src="28094.jpg" alt="Living cu Șemineu">
-                <p>Living primitor cu șemineu</p>
+                <p id="gal-4">Living primitor cu șemineu</p>
             </div>
 
             <div class="gallery-card">
                 <img src="28100.jpg" alt="Dormitor">
-                <p>Dormitor confortabil</p>
+                <p id="gal-5">Dormitor confortabil</p>
             </div>
 
             <div class="gallery-card">
                 <img src="28090.jpg" alt="Baie Modernă">
-                <p>Baie modernă cu duș walk-in</p>
+                <p id="gal-6">Baie modernă cu duș walk-in</p>
             </div>
 
             <div class="gallery-card">
                 <img src="28098.jpg" alt="A doua Baie Modernă">
-                <p>A doua baie amenajată modern</p>
+                <p id="gal-7">A doua baie amenajată modern</p>
             </div>
 
             <div class="gallery-card">
                 <img src="28096.jpg" alt="Casa Scării">
-                <p>Zona de acces și scări interioare</p>
+                <p id="gal-8">Zona de acces și scări interioare</p>
             </div>
 
             <div class="gallery-card">
                 <img src="28092.jpg" alt="Foișor Exterior">
-                <p>Terasă și zona de relaxare exterior</p>
+                <p id="gal-9">Terasă și zona de relaxare exterior</p>
             </div>
 
         </div>
     </div>
 
     <div class="container">
-        <h2 class="section-title">Unde Ne Găsiți</h2>
+        <h2 id="title-location" class="section-title">Unde Ne Găsiți</h2>
         <div class="map-container">
             <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d44692.3853112261!2d24.3725!3d45.6511!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x474c43a05c7423d7%3A0x28f731e84606f36d!2sValea%20Avrigului!5e0!3m2!1sro!2sro!4v1700000000000!5m2!1sro!2sro" 
@@ -336,15 +379,108 @@
 
     <footer>
         <p><strong>Cabana Ovidiu – Valea Avrigului</strong></p>
-        <p>Pentru rezervări și informații: +40 740 658 140</p>
-        <p style="font-size: 0.8rem; margin-top: 15px; opacity: 0.5;">
+        <p id="footer-contact">Pentru rezervări și informații: +40 740 658 140</p>
+        <p id="footer-gdpr" style="font-size: 0.8rem; margin-top: 15px; opacity: 0.5;">
             Acest site nu folosește module cookie și nu colectează date cu caracter personal în mod automat.
         </p>
     </footer>
 
-    <a href="https://wa.me/+40 740 658 140?text=Buna%20ziua!%20Doresc%20sa%20solicit%20o%20rezervare%20la%20Cabana%20Ovidiu." class="floating-wa" target="_blank" title="Rezervă pe WhatsApp">
+    <a href="https://wa.me/40740658140?text=Buna%20ziua!%20Doresc%20sa%20solicit%20o%20rezervare%20la%20Cabana%20Ovidiu." class="floating-wa" target="_blank" title="Rezervă pe WhatsApp">
         💬
     </a>
+
+    <script>
+        const translations = {
+            ro: {
+                heroSubtitle: "Oază de liniște și relaxare în inima Văii Avrigului",
+                btnWaHeader: "💬 Rezervă pe WhatsApp",
+                titleAbout: "Despre Cabană",
+                textAbout: "Suntem situați într-o zonă montană deosebită din Valea Avrigului. Cabana Ovidiu vă oferă tot confortul necesar pentru un sejur relaxant alături de familie și prieteni: curte spațioasă cu foișor, zona BBQ complet echipată, balansoar, șezlonguri și spații interioare călduroase și primitoare.",
+                titleFacilities: "Facilități & Servicii",
+                fac1: "Camere Confortabile",
+                fac2: "Foișor & Zona BBQ / Plită",
+                fac3: "Curte Mare & Balansoar",
+                fac4: "Băi Moderne cu Duș",
+                fac5: "Living cu Șemineu / Sobă",
+                fac6: "Tenis de Masă & Agrement",
+                titleGallery: "Galerie Foto",
+                gal1: "Vedere exterioară și terasă",
+                gal2: "Foișor acoperit cu grătar și plită",
+                gal3: "Curte spațioasă cu balansoar și șezlonguri",
+                gal4: "Living primitor cu șemineu",
+                gal5: "Dormitor confortabil",
+                gal6: "Baie modernă cu duș walk-in",
+                gal7: "A doua baie amenajată modern",
+                gal8: "Zona de acces și scări interioare",
+                gal9: "Terasă și zona de relaxare exterior",
+                titleLocation: "Unde Ne Găsiți",
+                footerContact: "Pentru rezervări și informații: +40 740 658 140",
+                footerGdpr: "Acest site nu folosește module cookie și nu colectează date cu caracter personal în mod automat.",
+                waMessage: "https://wa.me/40740658140?text=Buna%20ziua!%20Doresc%20sa%20solicit%20o%20rezervare%20la%20Cabana%20Ovidiu."
+            },
+            en: {
+                heroSubtitle: "An oasis of peace and relaxation in the heart of Avrig Valley",
+                btnWaHeader: "💬 Book on WhatsApp",
+                titleAbout: "About The Cabin",
+                textAbout: "Located in a beautiful mountain area in Avrig Valley, Cabana Ovidiu offers all the comfort for a relaxing stay with family and friends: spacious yard with gazebo, fully equipped BBQ area, swing, sun loungers, and warm, welcoming interiors.",
+                titleFacilities: "Amenities & Services",
+                fac1: "Comfortable Rooms",
+                fac2: "Gazebo & BBQ / Stovetop",
+                fac3: "Large Yard & Swing",
+                fac4: "Modern Bathrooms with Shower",
+                fac5: "Living Room with Fireplace",
+                fac6: "Table Tennis & Leisure",
+                titleGallery: "Photo Gallery",
+                gal1: "Exterior view and terrace",
+                gal2: "Covered gazebo with grill and stovetop",
+                gal3: "Spacious yard with swing and loungers",
+                gal4: "Cozy living room with fireplace",
+                gal5: "Comfortable bedroom",
+                gal6: "Modern bathroom with walk-in shower",
+                gal7: "Second modern bathroom",
+                gal8: "Staircase and entryway area",
+                gal9: "Outdoor terrace and relaxation area",
+                titleLocation: "Where To Find Us",
+                footerContact: "For bookings and info: +40 740 658 140",
+                footerGdpr: "This website does not use cookies and does not collect personal data automatically.",
+                waMessage: "https://wa.me/40740658140?text=Hello!%20I%20would%20like%20to%20request%20a%20booking%20at%20Cabana%20Ovidiu."
+            }
+        };
+
+        function setLanguage(lang) {
+            document.getElementById('hero-subtitle').innerText = translations[lang].heroSubtitle;
+            document.getElementById('btn-wa-header').innerText = translations[lang].btnWaHeader;
+            document.getElementById('btn-wa-header').href = translations[lang].waMessage;
+            document.getElementById('title-about').innerText = translations[lang].titleAbout;
+            document.getElementById('text-about').innerText = translations[lang].textAbout;
+            document.getElementById('title-facilities').innerText = translations[lang].titleFacilities;
+            document.getElementById('fac-1').innerText = translations[lang].fac1;
+            document.getElementById('fac-2').innerText = translations[lang].fac2;
+            document.getElementById('fac-3').innerText = translations[lang].fac3;
+            document.getElementById('fac-4').innerText = translations[lang].fac4;
+            document.getElementById('fac-5').innerText = translations[lang].fac5;
+            document.getElementById('fac-6').innerText = translations[lang].fac6;
+            document.getElementById('title-gallery').innerText = translations[lang].titleGallery;
+            document.getElementById('gal-1').innerText = translations[lang].gal1;
+            document.getElementById('gal-2').innerText = translations[lang].gal2;
+            document.getElementById('gal-3').innerText = translations[lang].gal3;
+            document.getElementById('gal-4').innerText = translations[lang].gal4;
+            document.getElementById('gal-5').innerText = translations[lang].gal5;
+            document.getElementById('gal-6').innerText = translations[lang].gal6;
+            document.getElementById('gal-7').innerText = translations[lang].gal7;
+            document.getElementById('gal-8').innerText = translations[lang].gal8;
+            document.getElementById('gal-9').innerText = translations[lang].gal9;
+            document.getElementById('title-location').innerText = translations[lang].titleLocation;
+            document.getElementById('footer-contact').innerText = translations[lang].footerContact;
+            document.getElementById('footer-gdpr').innerText = translations[lang].footerGdpr;
+
+            // Actualizare butoane
+            const buttons = document.querySelectorAll('.lang-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            if(lang === 'ro') buttons[0].classList.add('active');
+            else buttons[1].classList.add('active');
+        }
+    </script>
 
 </body>
 </html>
