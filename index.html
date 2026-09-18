@@ -1,1 +1,351 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cabana Ovidiu - Valea Avrigului</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+        }
+
+        /* Header / Hero */
+        header {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('28084.jpg') center/cover no-repeat;
+            height: 85vh;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            font-weight: 300;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+            padding: 14px 28px;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-2px);
+            background-color: #1ebc57;
+        }
+
+        /* Container General */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            position: relative;
+            color: #2c3e50;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 3px;
+            background-color: #27ae60;
+            display: block;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Facilitati Grid */
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .facility-card {
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+
+        .facility-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .facility-card div {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .facility-card h3 {
+            font-size: 1.1rem;
+            color: #2c3e50;
+        }
+
+        /* Galerie Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.2s;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-card p {
+            padding: 12px 15px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #34495e;
+            text-align: center;
+        }
+
+        /* Despre Section */
+        .about-text {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            text-align: center;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        /* Locatie / Harta */
+        .map-container {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: #bdc3c7;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin-bottom: 8px;
+        }
+
+        /* Floating WhatsApp Button Mobil */
+        .floating-wa {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            color: white;
+            padding: 15px;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            text-decoration: none;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            header p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <header>
+        <h1>Cabana Ovidiu</h1>
+        <p>Oază de liniște și relaxare în inima Văii Avrigului</p>
+        <a href="https://wa.me/40700000000?text=Buna%20ziua!%20Doresc%20sa%20solicit%20o%20rezervare%20la%20Cabana%20Ovidiu." class="btn-whatsapp" target="_blank">
+            💬 Rezervă pe WhatsApp
+        </a>
+    </header>
+
+    <div class="container">
+        
+        <!-- Despre Cabana -->
+        <h2 class="section-title">Despre Cabană</h2>
+        <div class="about-text">
+            <p>Suntem situați într-o zonă montană deosebită din Valea Avrigului. Cabana Ovidiu vă oferă tot confortul necesar pentru un sejur relaxant alături de familie și prieteni: curte spațioasă cu foișor, zona BBQ complet echipată, balansoar, șezlonguri și spații interioare călduroase și primitoare.</p>
+        </div>
+
+        <!-- Facilitati -->
+        <h2 class="section-title">Facilități & Servicii</h2>
+        <div class="facilities-grid">
+            <div class="facility-card">
+                <div>🛏️</div>
+                <h3>Camere Confortabile</h3>
+            </div>
+            <div class="facility-card">
+                <div>🍖</div>
+                <h3>Foișor & Zona BBQ / Plită</h3>
+            </div>
+            <div class="facility-card">
+                <div>🌳</div>
+                <h3>Curte Mare & Balansoar</h3>
+            </div>
+            <div class="facility-card">
+                <div>🚿</div>
+                <h3>Băi Moderne cu Duș</h3>
+            </div>
+            <div class="facility-card">
+                <div>🔥</div>
+                <h3>Living cu Șemineu / Sobă</h3>
+            </div>
+            <div class="facility-card">
+                <div>🏓</div>
+                <h3>Tenis de Masă & Agrement</h3>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Galerie Foto -->
+    <div class="container">
+        <h2 class="section-title">Galerie Foto</h2>
+        <div class="gallery-grid">
+            
+            <div class="gallery-card">
+                <img src="28084.jpg" alt="Vedere Exterioară Cabana Ovidiu">
+                <p>Vedere exterioară și terasă</p>
+            </div>
+
+            <div class="gallery-card">
+                <img src="28088.jpg" alt="Foișor și Zona de Grătar">
+                <p>Foișor acoperit cu grătar și plită</p>
+            </div>
+
+            <div class="gallery-card">
+                <img src="28086.jpg" alt="Zona de Relaxare în Curte">
+                <p>Curte spațioasă cu balansoar și șezlonguri</p>
+            </div>
+
+            <div class="gallery-card">
+                <img src="28094.jpg" alt="Living cu Șemineu">
+                <p>Living primitor cu șemineu</p>
+            </div>
+
+            <div class="gallery-card">
+                <img src="28100.jpg" alt="Dormitor">
+                <p>Dormitor confortabil</p>
+            </div>
+
+            <div class="gallery-card">
+                <img src="28090.jpg" alt="Baie Modernă">
+                <p>Baie modernă cu duș walk-in</p>
+            </div>
+
+            <div class="gallery-card">
+                <img src="28098.jpg" alt="A doua Baie Modernă">
+                <p>A doua baie amenajată modern</p>
+            </div>
+
+            <div class="gallery-card">
+                <img src="28096.jpg" alt="Casa Scării">
+                <p>Zona de acces și scări interioare</p>
+            </div>
+
+            <div class="gallery-card">
+                <img src="28092.jpg" alt="Foișor Exterior">
+                <p>Terasă și zona de relaxare exterior</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Locatie Harta -->
+    <div class="container">
+        <h2 class="section-title">Unde Ne Găsiți</h2>
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d44692.3853112261!2d24.3725!3d45.6511!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x474c43a05c7423d7%3A0x28f731e84606f36d!2sValea%20Avrigului!5e0!3m2!1sro!2sro!4v1700000000000!5m2!1sro!2sro" 
+                width="100%" 
+                height="350" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>Cabana Ovidiu – Valea Avrigului</strong></p>
+        <p>Pentru rezervări și informații, contactați-ne pe WhatsApp.</p>
+        <p style="font-size: 0.8rem; margin-top: 15px; opacity: 0.7;">
+            Acest site nu folosește module cookie și nu colectează date cu caracter personal în mod automat.
+        </p>
+    </footer>
+
+    <!-- Button WhatsApp Mobil Flotant -->
+    <a href="https://wa.me/40700000000?text=Buna%20ziua!%20Doresc%20sa%20solicit%20o%20rezervare%20la%20Cabana%20Ovidiu." class="floating-wa" target="_blank" title="Rezervă pe WhatsApp">
+        💬
+    </a>
+
+</body>
+</html>
 
