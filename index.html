@@ -13,17 +13,16 @@
             font-family: 'Poppins', sans-serif;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
             color: #e0e0e0;
             line-height: 1.6;
             background-color: #121619;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* Nav Bar cu Meniu Hamburger si Limba */
+        /* Nav Bar cu Hamburger la Stanga si Limba la Dreapta */
         nav {
             position: fixed;
             top: 0;
@@ -34,9 +33,15 @@
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            background: rgba(18, 22, 25, 0.9);
+            background: rgba(18, 22, 25, 0.95);
             backdrop-filter: blur(8px);
             border-bottom: 1px solid #2c353d;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
         .logo {
@@ -44,12 +49,7 @@
             font-size: 1.2rem;
             color: #fff;
             text-decoration: none;
-        }
-
-        .nav-controls {
-            display: flex;
-            align-items: center;
-            gap: 15px;
+            cursor: pointer;
         }
 
         /* Comutator Limba */
@@ -76,13 +76,13 @@
             color: #27ae60;
         }
 
-        /* Meniu Hamburger (Cele 3 liniute) */
+        /* Meniu Hamburger Stanga */
         .hamburger {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            width: 30px;
-            height: 21px;
+            width: 28px;
+            height: 20px;
             cursor: pointer;
             z-index: 1001;
         }
@@ -96,9 +96,8 @@
             transition: all 0.3s ease;
         }
 
-        /* Animație Hamburger */
         .hamburger.active span:nth-child(1) {
-            transform: translateY(9px) rotate(45deg);
+            transform: translateY(8.5px) rotate(45deg);
         }
 
         .hamburger.active span:nth-child(2) {
@@ -106,35 +105,35 @@
         }
 
         .hamburger.active span:nth-child(3) {
-            transform: translateY(-9px) rotate(-45deg);
+            transform: translateY(-8.5px) rotate(-45deg);
         }
 
-        /* Meniu Meniu Dropdown / Overlay */
+        /* Meniu Dropdown Stanga */
         .dropdown-menu {
             position: fixed;
             top: 0;
-            right: -100%;
+            left: -100%;
             width: 280px;
             height: 100vh;
             background-color: #1a2026;
-            border-left: 1px solid #2c353d;
-            box-shadow: -5px 0 25px rgba(0,0,0,0.6);
+            border-right: 1px solid #2c353d;
+            box-shadow: 5px 0 25px rgba(0,0,0,0.6);
             display: flex;
             flex-direction: column;
-            padding: 80px 30px 30px;
-            gap: 15px;
-            transition: right 0.4s ease;
+            padding: 80px 25px 30px;
+            gap: 12px;
+            transition: left 0.4s ease;
             z-index: 999;
         }
 
         .dropdown-menu.active {
-            right: 0;
+            left: 0;
         }
 
         .dropdown-menu a {
             color: #dcdde1;
             text-decoration: none;
-            font-size: 1.05rem;
+            font-size: 1rem;
             font-weight: 500;
             padding: 10px 0;
             border-bottom: 1px solid rgba(255,255,255,0.05);
@@ -142,6 +141,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            cursor: pointer;
         }
 
         .dropdown-menu a:hover {
@@ -149,10 +149,21 @@
             padding-left: 5px;
         }
 
+        /* Sistem de Pagini / Secțiuni */
+        .page-section {
+            display: none;
+            padding-top: 80px;
+            flex: 1;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
         /* Header / Hero */
         header {
             background: linear-gradient(rgba(0,0,0,0.65), rgba(18,22,25,0.95)), url('28084.jpg') center/cover no-repeat;
-            height: 85vh;
+            height: 80vh;
             color: #fff;
             display: flex;
             flex-direction: column;
@@ -160,21 +171,18 @@
             align-items: center;
             text-align: center;
             padding: 20px;
-            margin-top: 60px;
         }
 
         header h1 {
             font-size: 3rem;
             font-weight: 700;
             margin-bottom: 10px;
-            text-shadow: 0 3px 6px rgba(0,0,0,0.8);
             color: #f1f2f6;
         }
 
         header p {
             font-size: 1.2rem;
             margin-bottom: 25px;
-            font-weight: 300;
             color: #dcdde1;
         }
 
@@ -197,20 +205,18 @@
             background-color: #1ebc57;
         }
 
-        /* Container General */
+        /* Structura Container & Grid Pagini */
         .container {
-            max-width: 1100px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 50px 20px;
+            padding: 40px 20px;
         }
 
         .section-title {
             text-align: center;
             font-size: 2rem;
-            margin-bottom: 40px;
-            position: relative;
+            margin-bottom: 30px;
             color: #ffffff;
-            scroll-margin-top: 90px;
         }
 
         .section-title::after {
@@ -223,92 +229,53 @@
             border-radius: 2px;
         }
 
-        /* Despre Section */
-        .about-text {
+        .page-content-box {
             background: #1e2429;
             border: 1px solid #2c353d;
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             text-align: center;
-            font-size: 1.1rem;
-            color: #b2bec3;
         }
 
-        /* Facilitati Grid */
+        .image-gallery-single {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .image-gallery-single img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 1px solid #2c353d;
+        }
+
         .facilities-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
         }
 
         .facility-card {
             background: #1e2429;
             border: 1px solid #2c353d;
-            padding: 25px;
+            padding: 20px;
             border-radius: 12px;
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            transition: transform 0.2s, border-color 0.2s;
-        }
-
-        .facility-card:hover {
-            transform: translateY(-5px);
-            border-color: #27ae60;
         }
 
         .facility-card div {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+            font-size: 2.2rem;
+            margin-bottom: 8px;
         }
 
-        .facility-card h3 {
-            font-size: 1.1rem;
-            color: #f5f6fa;
-        }
-
-        /* Galerie Grid */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .gallery-card {
-            background: #1e2429;
-            border: 1px solid #2c353d;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            transition: transform 0.2s;
-            scroll-margin-top: 100px;
-        }
-
-        .gallery-card:hover {
-            transform: translateY(-3px);
-        }
-
-        .gallery-card img {
-            width: 100%;
-            height: 240px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .gallery-card p {
-            padding: 12px 15px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: #dcdde1;
-            text-align: center;
-        }
-
-        /* Locatie / Harta */
         .map-container {
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
             border: 1px solid #2c353d;
         }
 
@@ -317,16 +284,12 @@
             background: #0b0d0f;
             color: #7f8c8d;
             text-align: center;
-            padding: 30px 20px;
+            padding: 25px 20px;
             font-size: 0.9rem;
             border-top: 1px solid #1e2429;
+            margin-top: auto;
         }
 
-        footer p {
-            margin-bottom: 8px;
-        }
-
-        /* Floating WhatsApp Button Mobil */
         .floating-wa {
             position: fixed;
             bottom: 20px;
@@ -338,183 +301,189 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.5);
             text-decoration: none;
             font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             z-index: 100;
-        }
-
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.2rem;
-            }
-            header p {
-                font-size: 1rem;
-            }
         }
     </style>
 </head>
 <body>
 
+    <!-- Nav Bar -->
     <nav>
-        <a href="#" class="logo">Cabana Ovidiu</a>
-        <div class="nav-controls">
-            <div class="lang-switch">
-                <button class="lang-btn active" onclick="setLanguage('ro')">RO 🇷🇴</button>
-                <button class="lang-btn" onclick="setLanguage('en')">EN 🇬🇧</button>
-            </div>
+        <div class="nav-left">
             <div class="hamburger" id="hamburger" onclick="toggleMenu()">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
+            <a onclick="showPage('home')" class="logo">Cabana Ovidiu</a>
+        </div>
+        
+        <div class="lang-switch">
+            <button class="lang-btn active" onclick="setLanguage('ro')">RO 🇷🇴</button>
+            <button class="lang-btn" onclick="setLanguage('en')">EN 🇬🇧</button>
         </div>
     </nav>
 
+    <!-- Meniu Dropdown Stanga -->
     <div class="dropdown-menu" id="dropdown-menu">
-        <a href="#" onclick="toggleMenu()"><span id="menu-home">🏠 Acasă</span></a>
-        <a href="#about-sec" onclick="toggleMenu()"><span id="menu-about">ℹ️ Despre Noi</span></a>
-        <a href="#dormitoare" onclick="toggleMenu()"><span id="menu-rooms">🛏️ Dormitoare</span></a>
-        <a href="#bai" onclick="toggleMenu()"><span id="menu-baths">🚿 Băi Modernizate</span></a>
-        <a href="#foisor" onclick="toggleMenu()"><span id="menu-gazebo">🍖 Foișor & Grătar</span></a>
-        <a href="#curte" onclick="toggleMenu()"><span id="menu-yard">🌳 Curte & Relaxare</span></a>
-        <a href="#location-sec" onclick="toggleMenu()"><span id="menu-location">📍 Locație</span></a>
-        <a href="https://wa.me/40740658140?text=Buna%20ziua!%20Doresc%20sa%20solicit%20o%20rezervare%20la%20Cabana%20Ovidiu." target="_blank" onclick="toggleMenu()"><span id="menu-book">💬 Rezervare</span></a>
+        <a onclick="showPage('home')"><span id="menu-home">🏠 Acasă</span></a>
+        <a onclick="showPage('dormitoare')"><span id="menu-rooms">🛏️ Dormitoare</span></a>
+        <a onclick="showPage('bai')"><span id="menu-baths">🚿 Băi Modernizate</span></a>
+        <a onclick="showPage('foisor')"><span id="menu-gazebo">🍖 Foișor & Grătar</span></a>
+        <a onclick="showPage('curte')"><span id="menu-yard">🌳 Curte & Relaxare</span></a>
+        <a onclick="showPage('locatie')"><span id="menu-location">📍 Locație</span></a>
+        <a href="https://wa.me/40740658140?text=Buna%20ziua!%20Doresc%20sa%20solicit%20o%20rezervare%20la%20Cabana%20Ovidiu." target="_blank"><span id="menu-book">💬 Rezervare</span></a>
     </div>
 
-    <header>
-        <h1>Cabana Ovidiu</h1>
-        <p id="hero-subtitle">Oază de liniște și relaxare în inima Văii Avrigului</p>
-        <a id="btn-wa-header" href="https://wa.me/40740658140?text=Buna%20ziua!%20Doresc%20sa%20solicit%20o%20rezervare%20la%20Cabana%20Ovidiu." class="btn-whatsapp" target="_blank">
-            💬 Rezervă pe WhatsApp
-        </a>
-    </header>
-
-    <div class="container">
-        
-        <h2 id="title-about" class="section-title" id="about-sec">Despre Cabană</h2>
-        <div class="about-text">
-            <p id="text-about">Suntem situați într-o zonă montană deosebită din Valea Avrigului. Cabana Ovidiu vă oferă tot confortul necesar pentru un sejur relaxant alături de familie și prieteni: curte spațioasă cu foișor, zona BBQ complet echipată, balansoar, șezlonguri și spații interioare călduroase și primitoare.</p>
-        </div>
-
-        <h2 id="title-facilities" class="section-title">Facilități & Servicii</h2>
-        <div class="facilities-grid">
-            <div class="facility-card">
-                <div>🛏️</div>
-                <h3 id="fac-1">Camere Confortabile</h3>
+    <!-- Pagina 1: ACASĂ -->
+    <div id="page-home" class="page-section active">
+        <header>
+            <h1>Cabana Ovidiu</h1>
+            <p id="hero-subtitle">Oază de liniște și relaxare în inima Văii Avrigului</p>
+            <a id="btn-wa-header" href="https://wa.me/40740658140?text=Buna%20ziua!%20Doresc%20sa%20solicit%20o%20rezervare%20la%20Cabana%20Ovidiu." class="btn-whatsapp" target="_blank">
+                💬 Rezervă pe WhatsApp
+            </a>
+        </header>
+        <div class="container">
+            <h2 id="title-facilities" class="section-title">Facilități & Servicii</h2>
+            <div class="facilities-grid">
+                <div class="facility-card">
+                    <div>🛏️</div>
+                    <h3 id="fac-1">Camere Confortabile</h3>
+                </div>
+                <div class="facility-card">
+                    <div>🍖</div>
+                    <h3 id="fac-2">Foișor & Zona BBQ / Plită</h3>
+                </div>
+                <div class="facility-card">
+                    <div>🌳</div>
+                    <h3 id="fac-3">Curte Mare & Balansoar</h3>
+                </div>
+                <div class="facility-card">
+                    <div>🚿</div>
+                    <h3 id="fac-4">Băi Moderne cu Duș</h3>
+                </div>
+                <div class="facility-card">
+                    <div>🔥</div>
+                    <h3 id="fac-5">Living cu Șemineu / Sobă</h3>
+                </div>
+                <div class="facility-card">
+                    <div>🏓</div>
+                    <h3 id="fac-6">Tenis de Masă & Agrement</h3>
+                </div>
             </div>
-            <div class="facility-card">
-                <div>🍖</div>
-                <h3 id="fac-2">Foișor & Zona BBQ / Plită</h3>
-            </div>
-            <div class="facility-card">
-                <div>🌳</div>
-                <h3 id="fac-3">Curte Mare & Balansoar</h3>
-            </div>
-            <div class="facility-card">
-                <div>🚿</div>
-                <h3 id="fac-4">Băi Moderne cu Duș</h3>
-            </div>
-            <div class="facility-card">
-                <div>🔥</div>
-                <h3 id="fac-5">Living cu Șemineu / Sobă</h3>
-            </div>
-            <div class="facility-card">
-                <div>🏓</div>
-                <h3 id="fac-6">Tenis de Masă & Agrement</h3>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="container">
-        <h2 id="title-gallery" class="section-title">Galerie Foto</h2>
-        <div class="gallery-grid">
-            
-            <div class="gallery-card" id="curte">
-                <img src="28084.jpg" alt="Vedere Exterioară Cabana Ovidiu">
-                <p id="gal-1">Vedere exterioară și terasă</p>
-            </div>
-
-            <div class="gallery-card" id="foisor">
-                <img src="28088.jpg" alt="Foișor și Zona de Grătar">
-                <p id="gal-2">Foișor acoperit cu grătar și plită</p>
-            </div>
-
-            <div class="gallery-card">
-                <img src="28086.jpg" alt="Zona de Relaxare în Curte">
-                <p id="gal-3">Curte spațioasă cu balansoar și șezlonguri</p>
-            </div>
-
-            <div class="gallery-card">
-                <img src="28094.jpg" alt="Living cu Șemineu">
-                <p id="gal-4">Living primitor cu șemineu</p>
-            </div>
-
-            <div class="gallery-card" id="dormitoare">
-                <img src="28100.jpg" alt="Dormitor">
-                <p id="gal-5">Dormitor confortabil</p>
-            </div>
-
-            <div class="gallery-card" id="bai">
-                <img src="28090.jpg" alt="Baie Modernă">
-                <p id="gal-6">Baie modernă cu duș walk-in</p>
-            </div>
-
-            <div class="gallery-card">
-                <img src="28098.jpg" alt="A doua Baie Modernă">
-                <p id="gal-7">A doua baie amenajată modern</p>
-            </div>
-
-            <div class="gallery-card">
-                <img src="28096.jpg" alt="Casa Scării">
-                <p id="gal-8">Zona de acces și scări interioare</p>
-            </div>
-
-            <div class="gallery-card">
-                <img src="28092.jpg" alt="Foișor Exterior">
-                <p id="gal-9">Terasă și zona de relaxare exterior</p>
-            </div>
-
         </div>
     </div>
 
-    <div class="container" id="location-sec">
-        <h2 id="title-location" class="section-title">Unde Ne Găsiți</h2>
-        <div class="map-container">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d44692.3853112261!2d24.3725!3d45.6511!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x474c43a05c7423d7%3A0x28f731e84606f36d!2sValea%20Avrigului!5e0!3m2!1sro!2sro!4v1700000000000!5m2!1sro!2sro" 
-                width="100%" 
-                height="350" 
-                style="border:0;" 
-                allowfullscreen="" 
-                loading="lazy">
-            </iframe>
+    <!-- Pagina 2: DORMITOARE -->
+    <div id="page-dormitoare" class="page-section">
+        <div class="container">
+            <h2 id="pg-rooms-title" class="section-title">Dormitoare Confortabile</h2>
+            <div class="page-content-box">
+                <p id="pg-rooms-desc">Cabana dispune de dormitoare spațioase, ideale pentru un somn odihnitor în aerul curat de munte.</p>
+            </div>
+            <div class="image-gallery-single">
+                <img src="28100.jpg" alt="Dormitor principal">
+            </div>
         </div>
     </div>
 
+    <!-- Pagina 3: BĂI -->
+    <div id="page-bai" class="page-section">
+        <div class="container">
+            <h2 id="pg-baths-title" class="section-title">Băi Modernizate</h2>
+            <div class="page-content-box">
+                <p id="pg-baths-desc">Băile sunt complet renovate și echipate cu cabine de duș moderne, finisaje premium și un design elegant.</p>
+            </div>
+            <div class="image-gallery-single">
+                <img src="28090.jpg" alt="Baie modernă 1">
+                <img src="28098.jpg" alt="Baie modernă 2">
+            </div>
+        </div>
+    </div>
+
+    <!-- Pagina 4: FOIȘOR & GRĂTAR -->
+    <div id="page-foisor" class="page-section">
+        <div class="container">
+            <h2 id="pg-gazebo-title" class="section-title">Foișor & Zona de Grătar</h2>
+            <div class="page-content-box">
+                <p id="pg-gazebo-desc">Foișor acoperit echipat cu grătar pe lemne, plită tradițională și spațiu de luat masa în aer liber.</p>
+            </div>
+            <div class="image-gallery-single">
+                <img src="28088.jpg" alt="Foișor grătar">
+                <img src="28086.jpg" alt="Zona de masă în foișor">
+            </div>
+        </div>
+    </div>
+
+    <!-- Pagina 5: CURTE & RELAXARE -->
+    <div id="page-curte" class="page-section">
+        <div class="container">
+            <h2 id="pg-yard-title" class="section-title">Curte & Zone de Relaxare</h2>
+            <div class="page-content-box">
+                <p id="pg-yard-desc">Curte verde generoasă dotată cu balansoar, șezlonguri, masă de tenis de masă și spații exterioare de relaxare.</p>
+            </div>
+            <div class="image-gallery-single">
+                <img src="28084.jpg" alt="Vedere exterioară cabană">
+                <img src="28092.jpg" alt="Terasă și tenis de masă">
+            </div>
+        </div>
+    </div>
+
+    <!-- Pagina 6: LOCAȚIE -->
+    <div id="page-locatie" class="page-section">
+        <div class="container">
+            <h2 id="title-location" class="section-title">Unde Ne Găsiți</h2>
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d44692.3853112261!2d24.3725!3d45.6511!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x474c43a05c7423d7%3A0x28f731e84606f36d!2sValea%20Avrigului!5e0!3m2!1sro!2sro!4v1700000000000!5m2!1sro!2sro" 
+                    width="100%" 
+                    height="380" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
     <footer>
         <p><strong>Cabana Ovidiu – Valea Avrigului</strong></p>
         <p id="footer-contact">Pentru rezervări și informații: +40 740 658 140</p>
-        <p id="footer-gdpr" style="font-size: 0.8rem; margin-top: 15px; opacity: 0.5;">
+        <p id="footer-gdpr" style="font-size: 0.8rem; margin-top: 10px; opacity: 0.5;">
             Acest site nu folosește module cookie și nu colectează date cu caracter personal în mod automat.
         </p>
     </footer>
 
+    <!-- Button WhatsApp Mobil Flotant -->
     <a href="https://wa.me/40740658140?text=Buna%20ziua!%20Doresc%20sa%20solicit%20o%20rezervare%20la%20Cabana%20Ovidiu." class="floating-wa" target="_blank" title="Rezervă pe WhatsApp">
         💬
     </a>
 
+    <!-- Scripturi Schimbare Pagini & Traducere -->
     <script>
         function toggleMenu() {
             document.getElementById('hamburger').classList.toggle('active');
             document.getElementById('dropdown-menu').classList.toggle('active');
         }
 
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page-section');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            document.getElementById('page-' + pageId).classList.add('active');
+            
+            // Închide meniul după click
+            document.getElementById('hamburger').classList.remove('active');
+            document.getElementById('dropdown-menu').classList.remove('active');
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
         const translations = {
             ro: {
                 menuHome: "🏠 Acasă",
-                menuAbout: "ℹ️ Despre Noi",
                 menuRooms: "🛏️ Dormitoare",
                 menuBaths: "🚿 Băi Modernizate",
                 menuGazebo: "🍖 Foișor & Grătar",
@@ -523,8 +492,6 @@
                 menuBook: "💬 Rezervare",
                 heroSubtitle: "Oază de liniște și relaxare în inima Văii Avrigului",
                 btnWaHeader: "💬 Rezervă pe WhatsApp",
-                titleAbout: "Despre Cabană",
-                textAbout: "Suntem situați într-o zonă montană deosebită din Valea Avrigului. Cabana Ovidiu vă oferă tot confortul necesar pentru un sejur relaxant alături de familie și prieteni: curte spațioasă cu foișor, zona BBQ complet echipată, balansoar, șezlonguri și spații interioare călduroase și primitoare.",
                 titleFacilities: "Facilități & Servicii",
                 fac1: "Camere Confortabile",
                 fac2: "Foișor & Zona BBQ / Plită",
@@ -532,24 +499,21 @@
                 fac4: "Băi Moderne cu Duș",
                 fac5: "Living cu Șemineu / Sobă",
                 fac6: "Tenis de Masă & Agrement",
-                titleGallery: "Galerie Foto",
-                gal1: "Vedere exterioară și terasă",
-                gal2: "Foișor acoperit cu grătar și plită",
-                gal3: "Curte spațioasă cu balansoar și șezlonguri",
-                gal4: "Living primitor cu șemineu",
-                gal5: "Dormitor confortabil",
-                gal6: "Baie modernă cu duș walk-in",
-                gal7: "A doua baie amenajată modern",
-                gal8: "Zona de acces și scări interioare",
-                gal9: "Terasă și zona de relaxare exterior",
                 titleLocation: "Unde Ne Găsiți",
                 footerContact: "Pentru rezervări și informații: +40 740 658 140",
                 footerGdpr: "Acest site nu folosește module cookie și nu colectează date cu caracter personal în mod automat.",
-                waMessage: "https://wa.me/40740658140?text=Buna%20ziua!%20Doresc%20sa%20solicit%20o%20rezervare%20la%20Cabana%20Ovidiu."
+                waMessage: "https://wa.me/40740658140?text=Buna%20ziua!%20Doresc%20sa%20solicit%20o%20rezervare%20la%20Cabana%20Ovidiu.",
+                pgRoomsTitle: "Dormitoare Confortabile",
+                pgRoomsDesc: "Cabana dispune de dormitoare spațioase, ideale pentru un somn odihnitor în aerul curat de munte.",
+                pgBathsTitle: "Băi Modernizate",
+                pgBathsDesc: "Băile sunt complet renovate și echipate cu cabine de duș moderne, finisaje premium și un design elegant.",
+                pgGazeboTitle: "Foișor & Zona de Grătar",
+                pgGazeboDesc: "Foișor acoperit echipat cu grătar pe lemne, plită tradițională și spațiu de luat masa în aer liber.",
+                pgYardTitle: "Curte & Zone de Relaxare",
+                pgYardDesc: "Curte verde generoasă dotată cu balansoar, șezlonguri, masă de tenis de masă și spații exterioare de relaxare."
             },
             en: {
                 menuHome: "🏠 Home",
-                menuAbout: "ℹ️ About Us",
                 menuRooms: "🛏️ Bedrooms",
                 menuBaths: "🚿 Modern Bathrooms",
                 menuGazebo: "🍖 Gazebo & Grill",
@@ -558,8 +522,6 @@
                 menuBook: "💬 Book Now",
                 heroSubtitle: "An oasis of peace and relaxation in the heart of Avrig Valley",
                 btnWaHeader: "💬 Book on WhatsApp",
-                titleAbout: "About The Cabin",
-                textAbout: "Located in a beautiful mountain area in Avrig Valley, Cabana Ovidiu offers all the comfort for a relaxing stay with family and friends: spacious yard with gazebo, fully equipped outdoor grill area, swing, sun loungers, and warm, welcoming interiors.",
                 titleFacilities: "Amenities & Services",
                 fac1: "Comfortable Rooms",
                 fac2: "Gazebo & Outdoor Grill / Stovetop",
@@ -567,26 +529,23 @@
                 fac4: "Modern Bathrooms with Shower",
                 fac5: "Living Room with Fireplace",
                 fac6: "Table Tennis & Leisure",
-                titleGallery: "Photo Gallery",
-                gal1: "Exterior view and terrace",
-                gal2: "Covered gazebo with grill and stovetop",
-                gal3: "Spacious yard with swing and loungers",
-                gal4: "Cozy living room with fireplace",
-                gal5: "Comfortable bedroom",
-                gal6: "Modern bathroom with walk-in shower",
-                gal7: "Second modern bathroom",
-                gal8: "Staircase and entryway area",
-                gal9: "Outdoor terrace and relaxation area",
                 titleLocation: "Where To Find Us",
                 footerContact: "For bookings and info: +40 740 658 140",
                 footerGdpr: "This website does not use cookies and does not collect personal data automatically.",
-                waMessage: "https://wa.me/40740658140?text=Hello!%20I%20would%20like%20to%20request%20a%20booking%20at%20Cabana%20Ovidiu."
+                waMessage: "https://wa.me/40740658140?text=Hello!%20I%20would%20like%20to%20request%20a%20booking%20at%20Cabana%20Ovidiu.",
+                pgRoomsTitle: "Comfortable Bedrooms",
+                pgRoomsDesc: "The cabin features spacious bedrooms, perfect for a restful sleep in the fresh mountain air.",
+                pgBathsTitle: "Modernized Bathrooms",
+                pgBathsDesc: "The bathrooms are fully renovated and equipped with modern walk-in showers and elegant designs.",
+                pgGazeboTitle: "Gazebo & Outdoor Grill Area",
+                pgGazeboDesc: "Covered gazebo equipped with a wood grill, traditional stovetop, and outdoor dining space.",
+                pgYardTitle: "Yard & Relaxation Areas",
+                pgYardDesc: "Generous green yard with swing, sun loungers, table tennis, and relaxing outdoor spaces."
             }
         };
 
         function setLanguage(lang) {
             document.getElementById('menu-home').innerText = translations[lang].menuHome;
-            document.getElementById('menu-about').innerText = translations[lang].menuAbout;
             document.getElementById('menu-rooms').innerText = translations[lang].menuRooms;
             document.getElementById('menu-baths').innerText = translations[lang].menuBaths;
             document.getElementById('menu-gazebo').innerText = translations[lang].menuGazebo;
@@ -597,8 +556,6 @@
             document.getElementById('hero-subtitle').innerText = translations[lang].heroSubtitle;
             document.getElementById('btn-wa-header').innerText = translations[lang].btnWaHeader;
             document.getElementById('btn-wa-header').href = translations[lang].waMessage;
-            document.getElementById('title-about').innerText = translations[lang].titleAbout;
-            document.getElementById('text-about').innerText = translations[lang].textAbout;
             document.getElementById('title-facilities').innerText = translations[lang].titleFacilities;
             document.getElementById('fac-1').innerText = translations[lang].fac1;
             document.getElementById('fac-2').innerText = translations[lang].fac2;
@@ -606,19 +563,18 @@
             document.getElementById('fac-4').innerText = translations[lang].fac4;
             document.getElementById('fac-5').innerText = translations[lang].fac5;
             document.getElementById('fac-6').innerText = translations[lang].fac6;
-            document.getElementById('title-gallery').innerText = translations[lang].titleGallery;
-            document.getElementById('gal-1').innerText = translations[lang].gal1;
-            document.getElementById('gal-2').innerText = translations[lang].gal2;
-            document.getElementById('gal-3').innerText = translations[lang].gal3;
-            document.getElementById('gal-4').innerText = translations[lang].gal4;
-            document.getElementById('gal-5').innerText = translations[lang].gal5;
-            document.getElementById('gal-6').innerText = translations[lang].gal6;
-            document.getElementById('gal-7').innerText = translations[lang].gal7;
-            document.getElementById('gal-8').innerText = translations[lang].gal8;
-            document.getElementById('gal-9').innerText = translations[lang].gal9;
             document.getElementById('title-location').innerText = translations[lang].titleLocation;
             document.getElementById('footer-contact').innerText = translations[lang].footerContact;
             document.getElementById('footer-gdpr').innerText = translations[lang].footerGdpr;
+
+            document.getElementById('pg-rooms-title').innerText = translations[lang].pgRoomsTitle;
+            document.getElementById('pg-rooms-desc').innerText = translations[lang].pgRoomsDesc;
+            document.getElementById('pg-baths-title').innerText = translations[lang].pgBathsTitle;
+            document.getElementById('pg-baths-desc').innerText = translations[lang].pgBathsDesc;
+            document.getElementById('pg-gazebo-title').innerText = translations[lang].pgGazeboTitle;
+            document.getElementById('pg-gazebo-desc').innerText = translations[lang].pgGazeboDesc;
+            document.getElementById('pg-yard-title').innerText = translations[lang].pgYardTitle;
+            document.getElementById('pg-yard-desc').innerText = translations[lang].pgYardDesc;
 
             const buttons = document.querySelectorAll('.lang-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
