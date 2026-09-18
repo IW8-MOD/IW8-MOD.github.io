@@ -22,7 +22,7 @@
             flex-direction: column;
         }
 
-        /* Nav Bar cu Hamburger la Stanga si Limba la Dreapta */
+        /* Nav Bar */
         nav {
             position: fixed;
             top: 0;
@@ -33,7 +33,7 @@
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            background: rgba(18, 22, 25, 0.95);
+            background: rgba(18, 22, 25, 0.85);
             backdrop-filter: blur(8px);
             border-bottom: 1px solid #2c353d;
         }
@@ -160,30 +160,61 @@
             display: block;
         }
 
-        /* Header / Hero */
+        /* HEADER CU VIDEO ÎN BACKGROUND */
         header {
-            background: linear-gradient(rgba(0,0,0,0.65), rgba(18,22,25,0.95)), url('28084.jpg') center/cover no-repeat;
-            height: 80vh;
-            color: #fff;
+            position: relative;
+            height: 75vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 20px;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: 1;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.55);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 800px;
         }
 
         header h1 {
-            font-size: 3rem;
+            font-size: 3.2rem;
             font-weight: 700;
             margin-bottom: 10px;
-            color: #f1f2f6;
+            color: #ffffff;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.7);
         }
 
         header p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 25px;
-            color: #dcdde1;
+            color: #f1f2f6;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.7);
         }
 
         .btn-whatsapp {
@@ -196,7 +227,7 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
             transition: transform 0.2s, background-color 0.2s;
         }
 
@@ -205,7 +236,7 @@
             background-color: #1ebc57;
         }
 
-        /* Structura Container & Grid Pagini */
+        /* Container & Grid Pagini */
         .container {
             max-width: 1000px;
             margin: 0 auto;
@@ -307,7 +338,6 @@
 </head>
 <body>
 
-    <!-- Nav Bar -->
     <nav>
         <div class="nav-left">
             <div class="hamburger" id="hamburger" onclick="toggleMenu()">
@@ -324,7 +354,6 @@
         </div>
     </nav>
 
-    <!-- Meniu Dropdown Stanga -->
     <div class="dropdown-menu" id="dropdown-menu">
         <a onclick="showPage('home')"><span id="menu-home">🏠 Acasă</span></a>
         <a onclick="showPage('dormitoare')"><span id="menu-rooms">🛏️ Dormitoare</span></a>
@@ -335,15 +364,21 @@
         <a href="https://wa.me/40740658140?text=Buna%20ziua!%20Doresc%20sa%20solicit%20o%20rezervare%20la%20Cabana%20Ovidiu." target="_blank"><span id="menu-book">💬 Rezervare</span></a>
     </div>
 
-    <!-- Pagina 1: ACASĂ -->
     <div id="page-home" class="page-section active">
         <header>
-            <h1>Cabana Ovidiu</h1>
-            <p id="hero-subtitle">Oază de liniște și relaxare în inima Văii Avrigului</p>
-            <a id="btn-wa-header" href="https://wa.me/40740658140?text=Buna%20ziua!%20Doresc%20sa%20solicit%20o%20rezervare%20la%20Cabana%20Ovidiu." class="btn-whatsapp" target="_blank">
-                💬 Rezervă pe WhatsApp
-            </a>
+            <video class="hero-video" autoplay loop muted playsinline poster="28084.jpg">
+                <source src="28125.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1>Cabana Ovidiu</h1>
+                <p id="hero-subtitle">Oază de liniște și relaxare în inima Văii Avrigului</p>
+                <a id="btn-wa-header" href="https://wa.me/40740658140?text=Buna%20ziua!%20Doresc%20sa%20solicit%20o%20rezervare%20la%20Cabana%20Ovidiu." class="btn-whatsapp" target="_blank">
+                    💬 Rezervă pe WhatsApp
+                </a>
+            </div>
         </header>
+        
         <div class="container">
             <h2 id="title-facilities" class="section-title">Facilități & Servicii</h2>
             <div class="facilities-grid">
@@ -375,7 +410,6 @@
         </div>
     </div>
 
-    <!-- Pagina 2: DORMITOARE -->
     <div id="page-dormitoare" class="page-section">
         <div class="container">
             <h2 id="pg-rooms-title" class="section-title">Dormitoare Confortabile</h2>
@@ -388,7 +422,6 @@
         </div>
     </div>
 
-    <!-- Pagina 3: BĂI -->
     <div id="page-bai" class="page-section">
         <div class="container">
             <h2 id="pg-baths-title" class="section-title">Băi Modernizate</h2>
@@ -402,7 +435,6 @@
         </div>
     </div>
 
-    <!-- Pagina 4: FOIȘOR & GRĂTAR -->
     <div id="page-foisor" class="page-section">
         <div class="container">
             <h2 id="pg-gazebo-title" class="section-title">Foișor & Zona de Grătar</h2>
@@ -416,7 +448,6 @@
         </div>
     </div>
 
-    <!-- Pagina 5: CURTE & RELAXARE -->
     <div id="page-curte" class="page-section">
         <div class="container">
             <h2 id="pg-yard-title" class="section-title">Curte & Zone de Relaxare</h2>
@@ -430,7 +461,6 @@
         </div>
     </div>
 
-    <!-- Pagina 6: LOCAȚIE -->
     <div id="page-locatie" class="page-section">
         <div class="container">
             <h2 id="title-location" class="section-title">Unde Ne Găsiți</h2>
@@ -447,7 +477,6 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer>
         <p><strong>Cabana Ovidiu – Valea Avrigului</strong></p>
         <p id="footer-contact">Pentru rezervări și informații: +40 740 658 140</p>
@@ -456,12 +485,10 @@
         </p>
     </footer>
 
-    <!-- Button WhatsApp Mobil Flotant -->
     <a href="https://wa.me/40740658140?text=Buna%20ziua!%20Doresc%20sa%20solicit%20o%20rezervare%20la%20Cabana%20Ovidiu." class="floating-wa" target="_blank" title="Rezervă pe WhatsApp">
         💬
     </a>
 
-    <!-- Scripturi Schimbare Pagini & Traducere -->
     <script>
         function toggleMenu() {
             document.getElementById('hamburger').classList.toggle('active');
@@ -474,7 +501,6 @@
             
             document.getElementById('page-' + pageId).classList.add('active');
             
-            // Închide meniul după click
             document.getElementById('hamburger').classList.remove('active');
             document.getElementById('dropdown-menu').classList.remove('active');
             
